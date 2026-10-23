@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metal Saga · BEYBLADE · REF-Genius</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../shell.css">
+<script src="../icons.js"></script>
+<script src="../shell.js"></script>
+</head>
+<body>
+<main class="st-main">
+  <header class="st-top">
+    <span></span>
+    <a class="st-avatar" id="stAvatar" href="../index.html#perfil" title="Perfil" aria-label="Perfil"><span class="av">◉</span></a>
+  </header>
+
+  <section class="st-page">
+    <div class="st-head">
+      <div>
+        <h1>BEYBLADE</h1>
+        <p class="st-sub">Metal Saga · Bladers e Beyblades</p>
+      </div>
+      <div class="bb-count" id="count" aria-live="polite"></div>
+    </div>
+
+    <div class="st-tools">
+      <label class="st-search">
+        <span aria-hidden="true">🔍</span>
+        <input id="q" type="search" placeholder="Buscar Blader, Beyblade ou equipe..." autocomplete="off" aria-label="Buscar Blader">
+      </label>
+      <label class="bb-check">
+        <input id="unconf" type="checkbox">
+        <span>Mostrar não confirmados</span>
+      </label>
+    </div>
+
+    <div class="st-tabs" id="tabs" role="tablist" aria-label="Saga"></div>
+    <div id="sagas"></div>
+  </section>
+</main>
+
+<div class="st-modal" id="modal" hidden>
+  <div class="st-panel bb-panel" role="dialog" aria-modal="true" aria-labelledby="mName">
+    <button class="st-close" id="closeBtn" type="button" aria-label="Fechar">✕</button>
+    <div class="bb-mhead">
+      <div class="bb-portrait big" id="mPortrait"></div>
+      <div>
+        <h2 id="mName"></h2>
+        <p class="bb-aka" id="mAka"></p>
+      </div>
+    </div>
+    <div id="mBody"></div>
+  </div>
+</div>
+
+<!-- dados (um arquivo por saga) -->
+<script src="data/metal-fusion.js"></script>
+<script src="data/metal-masters.js"></script>
+<script src="data/metal-fury.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

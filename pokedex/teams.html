@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokédex — Montar Time</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/teams.css">
+<link rel="stylesheet" href="../shell.css"><script src="../icons.js"></script>
+<script src="../shell.js"></script>
+</head>
+<body>
+
+<header class="header">
+  <div class="header__inner">
+    <a href="index.html" class="logo">
+      <span class="logo__ball" aria-hidden="true"></span>
+      <span class="logo__text">Pokédex</span>
+    </a>
+
+    <nav class="nav" id="mainNav">
+      <a href="index.html" class="nav__link">Início</a>
+      <a href="index.html#pokemon" class="nav__link">Pokémon</a>
+      <a href="teams.html" class="nav__link nav__link--active">Times</a>
+      <a href="regions.html" class="nav__link">Regiões</a>
+      <a href="trainers.html" class="nav__link">Treinadores</a>
+    </nav>
+
+    <div class="header__actions">
+      <button id="themeToggle" class="icon-btn" title="Alternar tema" aria-label="Alternar tema claro/escuro">🌙</button>
+      <button class="icon-btn nav__burger" id="navBurger" aria-label="Abrir menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <section class="hero">
+    <h1>Montar Time</h1>
+    <p>Escolha até 6 Pokémon e veja como seu time se sai contra cada tipo</p>
+  </section>
+
+  <!-- Barra de times -->
+  <section class="team-bar" aria-label="Seus times">
+    <div class="team-bar__select">
+      <label for="teamSelect" class="muted">Time</label>
+      <select id="teamSelect" class="select"></select>
+      <span id="teamCount" class="badge-count">0/6</span>
+    </div>
+    <div class="team-bar__actions">
+      <button id="newTeamBtn" class="btn btn--secondary">+ Novo</button>
+      <button id="renameTeamBtn" class="btn btn--secondary">Renomear</button>
+      <button id="copyTeamBtn" class="btn btn--secondary">Copiar</button>
+      <button id="clearTeamBtn" class="btn btn--secondary">Limpar</button>
+      <button id="deleteTeamBtn" class="btn btn--secondary btn--danger">Excluir</button>
+    </div>
+  </section>
+
+  <!-- Slots do time -->
+  <section id="slots" class="slots" aria-live="polite"></section>
+
+  <!-- Análise -->
+  <section id="analysis" class="analysis" hidden>
+    <h2>Análise do time</h2>
+
+    <div id="analysisWarnings" class="warnings"></div>
+
+    <div class="analysis__cols">
+      <div class="panel">
+        <h3>Média dos stats base</h3>
+        <div id="avgStats"></div>
+      </div>
+      <div class="panel">
+        <h3>Defesa por tipo</h3>
+        <p class="muted small">Quantos Pokémon do time são fracos ou resistentes a cada tipo de ataque.</p>
+        <div id="typeTable" class="type-table"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seletor -->
+  <section class="picker" id="picker">
+    <h2>Adicionar Pokémon</h2>
+
+    <div class="picker__filters">
+      <div class="search-box picker__search">
+        <span class="search-box__icon">🔎</span>
+        <input type="text" id="pickerSearch" placeholder="Nome ou número..." aria-label="Buscar Pokémon para o time">
+      </div>
+      <select id="pickerType" class="select" aria-label="Filtrar por tipo">
+        <option value="all">Todos os tipos</option>
+      </select>
+      <select id="pickerGen" class="select" aria-label="Filtrar por geração">
+        <option value="all">Todas as gerações</option>
+      </select>
+      <label class="check">
+        <input type="checkbox" id="pickerFav"> Só favoritos
+      </label>
+    </div>
+
+    <p id="pickerInfo" class="results-info"></p>
+    <div id="pickerGrid" class="picker__grid"></div>
+
+    <div id="pickerLoading" class="state-panel">
+      <div class="loading-bolt">⚡</div>
+      <p>Carregando Pokémon...</p>
+    </div>
+    <div id="pickerEmpty" class="state-panel" hidden>
+      <p class="state-panel__title">Nenhum Pokémon encontrado.</p>
+      <p>Ajuste a busca ou os filtros.</p>
+    </div>
+    <div id="pickerError" class="state-panel" hidden>
+      <p class="state-panel__title">Não foi possível carregar os dados.</p>
+      <p>Verifique sua conexão e tente novamente.</p>
+      <button id="pickerRetry" class="btn btn--primary">Tentar novamente</button>
+    </div>
+
+    <div class="load-more-wrap">
+      <button id="pickerMore" class="btn btn--secondary" hidden>Carregar mais</button>
+    </div>
+  </section>
+
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<footer class="footer">
+  <p>Dados fornecidos pela <a href="https://pokeapi.co" target="_blank" rel="noopener">PokéAPI</a>. Projeto sem fins lucrativos, feito para fins educacionais.</p>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/search.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/teams.js"></script>
+</body>
+</html>

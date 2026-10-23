@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dota 2 Database</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../shell.css"><script src="../icons.js"></script>
+<script src="../shell.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="logo" href="#home" data-nav="home">DOTA 2</a>
+  <button class="burger" id="burger" aria-label="Abrir menu">☰</button>
+  <nav id="nav">
+    <a href="#home" data-nav="home">Home</a>
+    <a href="#herois" data-nav="herois">Heróis</a>
+    <a href="#time" data-nav="time">Montar time</a>
+    <a href="#itens" data-nav="itens">Itens</a>
+    <a href="#favoritos" data-nav="favoritos">Favoritos</a>
+  </nav>
+  <input id="globalSearch" type="search" placeholder="🔎 Pesquisar herói ou item..." autocomplete="off">
+  <button id="themeBtn" class="theme-btn">☀️ Light Mode</button>
+</header>
+
+<main>
+  <section id="home" class="view on">
+    <div class="hero-banner">
+      <h1>DOTA 2</h1>
+      <p>Explore os heróis, habilidades e itens de Dota 2.</p>
+    </div>
+    <h2>⚔️ HERÓIS</h2>
+    <div id="homeGrid" class="pgrid"></div>
+  </section>
+
+  <div id="status" class="status">Carregando...</div>
+
+  <section id="resultados" class="hidden">
+    <h2>🔎 RESULTADOS</h2>
+    <h3>HERÓIS</h3><div id="resHeroes" class="grid"></div>
+    <h3>ITENS</h3><div id="resItems" class="grid items"></div>
+  </section>
+
+  <div id="content" class="hidden">
+    <section id="herois" class="view">
+      <h2>⚔️ HERÓIS</h2>
+      <div class="filters">
+        <div id="attrFilters" class="chips"></div>
+        <select id="roleFilter"><option value="">Todas as funções</option></select>
+        <input id="nameFilter" type="search" placeholder="Filtrar por nome...">
+      </div>
+      <div id="heroGrid" class="grid"></div>
+    </section>
+
+    <section id="time" class="view">
+      <h2>⚔️ MONTAR TIME</h2>
+      <div class="filters"><input id="tName" type="text" placeholder="Nome do time" maxlength="40" autocomplete="off"><button class="btn" id="tSave">Salvar time</button><button class="btn" id="tMd">Salvar em .md</button><button class="btn ghost" id="tClear">Limpar</button><span id="tCount" class="na"></span></div>
+      <div id="tp" class="slots"></div>
+      <h3>ESCOLHER HERÓI <span id="pickFor" class="na"></span></h3>
+      <div class="filters"><input id="pkq" type="search" placeholder="Buscar herói..." autocomplete="off"><select id="pkc"><option value="">Todos os atributos</option></select></div>
+      <div id="pkg" class="pgrid pickbox"></div>
+      <h3>TIMES SALVOS</h3>
+      <div id="tSaved"></div>
+    </section>
+
+    <section id="favoritos" class="view">
+      <h2>❤️ Meus favoritos</h2>
+      <div id="favGrid" class="grid"></div>
+    </section>
+
+    <section id="itens" class="view">
+      <h2>🗡️ ITENS</h2>
+      <div class="filters"><input id="itemFilter" type="search" placeholder="🔎 Pesquisar item..."></div>
+      <div id="itemGrid" class="grid items"></div>
+    </section>
+  </div>
+</main>
+
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+  <div class="modal-box"><button class="close" id="closeModal" aria-label="Fechar">✕</button><div id="modalBody"></div></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

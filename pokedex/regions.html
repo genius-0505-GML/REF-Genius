@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokédex — Regiões</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/regions.css">
+<link rel="stylesheet" href="../shell.css"><script src="../icons.js"></script>
+<script src="../shell.js"></script>
+</head>
+<body>
+
+<header class="header">
+  <div class="header__inner">
+    <a href="index.html" class="logo">
+      <span class="logo__ball" aria-hidden="true"></span>
+      <span class="logo__text">Pokédex</span>
+    </a>
+
+    <nav class="nav" id="mainNav">
+      <a href="index.html" class="nav__link">Início</a>
+      <a href="index.html#pokemon" class="nav__link">Pokémon</a>
+      <a href="teams.html" class="nav__link">Times</a>
+      <a href="regions.html" class="nav__link nav__link--active">Regiões</a>
+      <a href="trainers.html" class="nav__link">Treinadores</a>
+    </nav>
+
+    <div class="header__actions">
+      <button id="themeToggle" class="icon-btn" title="Alternar tema" aria-label="Alternar tema claro/escuro">🌙</button>
+      <button class="icon-btn nav__burger" id="navBurger" aria-label="Abrir menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <section class="hero">
+    <h1>Regiões</h1>
+    <p>Conheça os lugares onde as aventuras Pokémon acontecem</p>
+  </section>
+
+  <div id="loadingState" class="state-panel">
+    <div class="loading-bolt">⚡</div>
+    <p>Carregando regiões...</p>
+  </div>
+
+  <div id="errorState" class="state-panel" hidden>
+    <p class="state-panel__title">Não foi possível carregar as regiões.</p>
+    <p>Verifique sua conexão e tente novamente.</p>
+    <button id="retryBtn" class="btn btn--primary">Tentar novamente</button>
+  </div>
+
+  <div id="content" hidden>
+    <section id="regionCards" class="region-cards" aria-label="Regiões"></section>
+
+    <section id="regionDetail" class="region-detail" aria-live="polite">
+      <header id="regionHeader" class="region-header"></header>
+
+      <div class="region-block">
+        <h2>Jogos</h2>
+        <div id="regionGames" class="chip-group"></div>
+      </div>
+
+      <div class="region-block">
+        <h2 id="pokemonTitle">Pokémon</h2>
+        <div id="regionPokemon" class="region-pokemon"></div>
+        <div class="load-more-wrap">
+          <button id="pokemonMore" class="btn btn--secondary" hidden>Carregar mais</button>
+        </div>
+      </div>
+
+      <div class="region-block">
+        <h2 id="locationsTitle">Locais</h2>
+        <div class="search-box region-search">
+          <span class="search-box__icon">🔎</span>
+          <input type="text" id="locationSearch" placeholder="Filtrar locais..." aria-label="Filtrar locais">
+        </div>
+        <ul id="regionLocations" class="locations-list"></ul>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <p>Dados fornecidos pela <a href="https://pokeapi.co" target="_blank" rel="noopener">PokéAPI</a>. Projeto sem fins lucrativos, feito para fins educacionais.</p>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/search.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/regions.js"></script>
+</body>
+</html>

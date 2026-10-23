@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokédex — Detalhes</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/pokemon.css">
+<link rel="stylesheet" href="../shell.css"><script src="../icons.js"></script>
+<script src="../shell.js"></script>
+</head>
+<body>
+
+<header class="header">
+  <div class="header__inner">
+    <a href="index.html" class="logo">
+      <span class="logo__ball" aria-hidden="true"></span>
+      <span class="logo__text">Pokédex</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="nav__link">← Voltar</a>
+      <a href="index.html#pokemon" class="nav__link">Pokémon</a>
+      <a href="teams.html" class="nav__link">Times</a>
+      <a href="regions.html" class="nav__link">Regiões</a>
+      <a href="trainers.html" class="nav__link">Treinadores</a>
+    </nav>
+    <div class="header__actions">
+      <button id="themeToggle" class="icon-btn" title="Alternar tema">🌙</button>
+      <button class="icon-btn nav__burger" id="navBurger" aria-label="Abrir menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="main main--detail">
+
+  <div id="loadingState" class="state-panel">
+    <div class="loading-bolt">⚡</div>
+    <p>Carregando Pokémon...</p>
+  </div>
+
+  <div id="errorState" class="state-panel" hidden>
+    <p class="state-panel__title">Não foi possível carregar os dados.</p>
+    <p>Verifique sua conexão e tente novamente.</p>
+    <a href="index.html" class="btn btn--primary">Voltar à Pokédex</a>
+  </div>
+
+  <div id="detailContent" hidden>
+
+    <section class="detail-hero" id="detailHero">
+      <div class="detail-hero__nav">
+        <button id="prevBtn" class="icon-btn" aria-label="Pokémon anterior">←</button>
+        <span id="detailNumber" class="detail-hero__number"></span>
+        <button id="nextBtn" class="icon-btn" aria-label="Próximo Pokémon">→</button>
+      </div>
+
+      <h1 id="detailName" class="detail-hero__name"></h1>
+      <div id="detailTypes" class="card__types detail-hero__types"></div>
+
+      <div class="detail-hero__image-wrap">
+        <img id="detailImage" class="detail-hero__image" alt="">
+        <button id="favBtn" class="fav-btn-large" aria-label="Favoritar">♡</button>
+      </div>
+
+      <div class="detail-hero__controls">
+        <div class="sprite-toggle">
+          <button class="sprite-toggle__btn sprite-toggle__btn--active" data-variant="normal">Normal</button>
+          <button class="sprite-toggle__btn" data-variant="shiny">✨ Shiny</button>
+        </div>
+        <button id="cryBtn" class="btn btn--secondary">🔊 Ouvir Cry</button>
+        <audio id="cryAudio"></audio>
+      </div>
+    </section>
+
+    <nav class="tabs" id="tabs">
+      <button class="tab tab--active" data-tab="about">Sobre</button>
+      <button class="tab" data-tab="stats">Stats</button>
+      <button class="tab" data-tab="abilities">Habilidades</button>
+      <button class="tab" data-tab="moves">Golpes</button>
+      <button class="tab" data-tab="evolution">Evoluções</button>
+      <button class="tab" data-tab="locations">Localizações</button>
+    </nav>
+
+    <section class="tab-panel tab-panel--active" id="panel-about">
+      <div class="info-grid" id="basicInfoGrid"></div>
+
+      <div class="section-block">
+        <h2>Descrição</h2>
+        <p id="flavorText" class="flavor-text"></p>
+      </div>
+
+      <div class="section-block">
+        <h2>Treinamento</h2>
+        <div class="info-grid" id="trainingGrid"></div>
+      </div>
+
+      <div class="section-block">
+        <h2>Reprodução</h2>
+        <div class="info-grid" id="breedingGrid"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="panel-stats">
+      <div class="section-block">
+        <h2>Base Stats</h2>
+        <div id="statsBars" class="stats-bars"></div>
+      </div>
+      <div class="section-block">
+        <h2>Efetividade de Tipos</h2>
+        <div id="effectiveness" class="effectiveness-grid"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="panel-abilities">
+      <div class="section-block">
+        <h2>Habilidades</h2>
+        <div id="abilitiesList" class="abilities-list"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="panel-moves">
+      <div class="section-block">
+        <h2>Movimentos</h2>
+        <div class="chip-group" id="moveMethodChips"></div>
+        <div id="movesList" class="moves-list"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="panel-evolution">
+      <div class="section-block">
+        <h2>Cadeia Evolutiva</h2>
+        <div id="evolutionChain" class="evolution-chain"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="panel-locations">
+      <div class="section-block">
+        <h2>Localizações</h2>
+        <div id="locationsList" class="locations-list"></div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <p>Dados fornecidos pela <a href="https://pokeapi.co" target="_blank" rel="noopener">PokéAPI</a>.</p>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/pokemon.js"></script>
+</body>
+</html>

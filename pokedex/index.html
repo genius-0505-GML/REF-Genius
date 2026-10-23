@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokédex — Explore todos os Pokémon</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../shell.css"><script src="../icons.js"></script>
+<script src="../shell.js"></script>
+</head>
+<body>
+
+<header class="header">
+  <div class="header__inner">
+    <a href="index.html" class="logo">
+      <span class="logo__ball" aria-hidden="true"></span>
+      <span class="logo__text">Pokédex</span>
+    </a>
+
+    <nav class="nav" id="mainNav">
+      <a href="index.html#home" class="nav__link nav__link--active" data-view="home">Início</a>
+      <a href="index.html#pokemon" class="nav__link" data-view="pokemon">Pokémon</a>
+      <button class="nav__link" id="navFavorites" data-view="favorites">Favoritos <span id="favCount" class="badge-count">0</span></button>
+      <a href="teams.html" class="nav__link">Times</a>
+      <a href="regions.html" class="nav__link">Regiões</a>
+      <a href="trainers.html" class="nav__link">Treinadores</a>
+    </nav>
+
+    <div class="header__actions">
+      <div class="search-box">
+        <span class="search-box__icon">🔎</span>
+        <input type="text" id="searchInput" placeholder="Buscar Pokémon..." aria-label="Buscar Pokémon">
+      </div>
+      <button id="themeToggle" class="icon-btn" title="Alternar tema" aria-label="Alternar tema claro/escuro">🌙</button>
+      <button class="icon-btn nav__burger" id="navBurger" aria-label="Abrir menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <div id="homeView">
+    <section class="hero">
+      <h1>Pokédex</h1>
+      <p>Explore todos os Pokémon</p>
+    </section>
+    <h2 class="home-title">Pokémon</h2>
+    <div id="homeGrid" class="pgrid"></div>
+  </div>
+
+  <div id="listView" hidden>
+
+  <section class="filters" aria-label="Filtros">
+    <div class="filters__group">
+      <h3>Tipo</h3>
+      <div class="chip-group" id="typeFilters">
+        <button class="chip chip--active" data-type="all">Todos</button>
+      </div>
+    </div>
+
+    <div class="filters__group">
+      <h3>Geração</h3>
+      <div class="chip-group" id="genFilters">
+        <button class="chip chip--active" data-gen="all">Todos</button>
+      </div>
+    </div>
+
+    <div class="filters__group filters__group--sort">
+      <h3>Ordenar por</h3>
+      <select id="sortSelect" class="select">
+        <option value="number">Número</option>
+        <option value="name">Nome</option>
+        <option value="hp">HP</option>
+        <option value="attack">Attack</option>
+        <option value="defense">Defense</option>
+        <option value="speed">Speed</option>
+      </select>
+    </div>
+  </section>
+
+  <section id="resultsInfo" class="results-info" hidden></section>
+
+  <section id="grid" class="grid" aria-live="polite"></section>
+
+  <div id="loadingState" class="state-panel">
+    <div class="loading-bolt">⚡</div>
+    <p>Carregando Pokémon...</p>
+  </div>
+
+  <div id="emptyState" class="state-panel" hidden>
+    <p class="state-panel__title">Pokémon não encontrado.</p>
+    <p>Tente pesquisar por outro nome ou número.</p>
+  </div>
+
+  <div id="errorState" class="state-panel" hidden>
+    <p class="state-panel__title">Não foi possível carregar os dados.</p>
+    <p>Verifique sua conexão e tente novamente.</p>
+    <button id="retryBtn" class="btn btn--primary">Tentar novamente</button>
+  </div>
+
+  <div class="load-more-wrap">
+    <button id="loadMoreBtn" class="btn btn--secondary" hidden>Carregar mais</button>
+  </div>
+  </div><!-- /listView -->
+
+</main>
+
+<footer class="footer">
+  <p>Dados fornecidos pela <a href="https://pokeapi.co" target="_blank" rel="noopener">PokéAPI</a>. Projeto sem fins lucrativos, feito para fins educacionais.</p>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/search.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

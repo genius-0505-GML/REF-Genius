@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minha Lista · ANIMES · REF-Genius</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../shell.css">
+<script src="../icons.js"></script>
+<script src="../shell.js"></script>
+</head>
+<body>
+<main class="st-main">
+  <header class="st-top">
+    <span></span>
+    <a class="st-avatar" id="stAvatar" href="../index.html#perfil" title="Perfil" aria-label="Perfil"><span class="av">◉</span></a>
+  </header>
+
+  <section class="st-page">
+    <div class="st-head">
+      <div>
+        <h1>ANIMES</h1>
+        <p class="st-sub">Minha lista</p>
+      </div>
+      <button class="st-btn st-add" id="addBtn" type="button">+ Adicionar anime</button>
+    </div>
+
+    <section class="an-now" id="now" aria-label="Assistindo agora" hidden></section>
+
+    <div class="st-tools">
+      <label class="st-search">
+        <span aria-hidden="true">🔍</span>
+        <input id="q" type="search" placeholder="Buscar anime..." autocomplete="off" aria-label="Buscar anime">
+      </label>
+      <label class="st-sort">
+        <span>Ordenar por</span>
+        <select id="sort" aria-label="Ordenar por">
+          <option value="name">Nome</option>
+          <option value="progress">Progresso</option>
+          <option value="rating">Nota</option>
+          <option value="lastWatched">Último assistido</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="st-tabs" id="tabs" role="tablist" aria-label="Filtros"></div>
+    <div class="st-grid" id="grid"></div>
+    <div class="st-more" id="more"></div>
+  </section>
+</main>
+
+<div class="st-modal" id="modal" hidden>
+  <div class="st-panel" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button class="st-close" id="closeBtn" type="button" aria-label="Fechar">✕</button>
+    <h2 id="mTitle">ADICIONAR ANIME</h2>
+
+    <div class="st-prev" aria-hidden="true">
+      <div class="st-bar"><i id="mBar"></i></div>
+      <b id="mPct">0%</b>
+    </div>
+
+    <form id="form" autocomplete="off">
+      <label class="st-f">Nome
+        <input id="fName" name="title" maxlength="120" required placeholder="Ex.: Jujutsu Kaisen">
+      </label>
+      <label class="st-f">Capa
+        <input id="fCover" name="cover" placeholder="https://... (opcional)">
+      </label>
+      <label class="st-f">Status
+        <select id="fStatus" name="status">
+          <option value="planned">○ Quero assistir</option>
+          <option value="watching">◐ Assistindo</option>
+          <option value="completed">✓ Assistido</option>
+          <option value="paused">⏸ Pausado</option>
+          <option value="dropped">❌ Dropped</option>
+        </select>
+      </label>
+      <div class="st-row">
+        <label class="st-f">Episódio atual
+          <input id="fCur" name="cur" type="number" min="0" step="1" placeholder="0">
+        </label>
+        <label class="st-f">Total de episódios
+          <input id="fTotal" name="total" type="number" min="1" step="1" placeholder="vazio = em lançamento">
+        </label>
+      </div>
+      <div class="st-row">
+        <label class="st-f">Temporadas
+          <input id="fSeasons" name="seasons" type="number" min="1" step="1" placeholder="1">
+        </label>
+        <label class="st-f">Nota (0–10)
+          <input id="fRating" name="rating" type="number" min="0" max="10" step="any" placeholder="opcional">
+        </label>
+      </div>
+      <label class="st-f">Último assistido
+        <input id="fDate" name="date" type="date">
+      </label>
+
+      <p class="st-err" id="fErr" role="alert" hidden></p>
+
+      <div class="st-actions">
+        <button class="st-btn st-danger" id="delBtn" type="button" hidden>Excluir</button>
+        <span class="st-spacer"></span>
+        <button class="st-btn st-ghost" id="cancelBtn" type="button">Cancelar</button>
+        <button class="st-btn" type="submit">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

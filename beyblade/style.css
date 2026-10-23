@@ -1,0 +1,84 @@
+/* REF-Genius · BEYBLADE — reaproveita o visual da biblioteca (topo, busca, abas, modal) em ../steam/style.css
+   e acrescenta só o que é próprio daqui: cor de destaque, cards de Blader e o modal com todas as Beyblades. */
+@import url("../steam/style.css");
+
+:root{--a:#fb923c;--glow:rgba(251,146,60,.28)}
+
+/* contador no cabeçalho */
+.bb-count{color:var(--muted);font-size:.86rem;padding-bottom:4px}
+.bb-count b{color:var(--text)}
+
+/* checkbox "não confirmados" */
+.bb-check{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:.86rem;cursor:pointer;user-select:none;white-space:nowrap}
+.bb-check input{accent-color:var(--a);width:16px;height:16px;cursor:pointer}
+.bb-check:hover{color:var(--text)}
+
+/* ===== seção de cada saga ===== */
+.bb-saga{margin-bottom:40px}
+.bb-saga-h{display:flex;align-items:baseline;gap:14px;margin:6px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.bb-saga-h h2{font-family:"Space Grotesk",Inter,sans-serif;font-size:1.25rem;letter-spacing:.14em;font-weight:700}
+.bb-saga-h span{color:var(--muted);font-size:.84rem}
+
+/* ===== grade e cards (desktop primeiro: cards grandes com a Beyblade em destaque) ===== */
+.bb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;align-items:start}
+.bb-card{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;text-align:left;box-shadow:0 4px 18px rgba(0,0,0,.35);transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .2s,box-shadow .25s}
+.bb-card:hover,.bb-card:focus-visible{transform:translateY(-4px);border-color:var(--a);box-shadow:0 10px 28px var(--glow);outline:0}
+.bb-card.unconf{border-style:dashed}
+
+/* imagem grande da Beyblade */
+.bb-bey{position:relative;aspect-ratio:1/1;background:radial-gradient(circle at 50% 42%,color-mix(in srgb,var(--a) 14%,#15151a),#0e0e11 72%);display:grid;place-items:center}
+.bb-bey img{width:86%;height:86%;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(0,0,0,.55));transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.bb-card:hover .bb-bey img{transform:scale(1.06) rotate(-4deg)}
+.bb-bey img.ph{opacity:.55;filter:none}
+.bb-bey.sw img{animation:bb-in .25s ease}
+@keyframes bb-in{from{opacity:0;transform:scale(.94)}}
+
+/* retrato do Blader (círculo sobre o canto da imagem) */
+.bb-portrait{display:grid;place-items:center;width:58px;height:58px;border-radius:50%;overflow:hidden;background:#1c1c22;border:2px solid var(--line);color:var(--muted);font-family:"Space Grotesk",Inter,sans-serif;font-weight:700;flex:none}
+.bb-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block}
+.bb-portrait.big{width:84px;height:84px;font-size:1.4rem;border-color:var(--a)}
+.bb-bey .bb-portrait{position:absolute;left:12px;bottom:-26px;z-index:2;border-color:var(--a);box-shadow:0 4px 14px rgba(0,0,0,.5)}
+
+/* seletor quando há várias Beyblades na mesma saga */
+.bb-pick{position:absolute;right:10px;bottom:10px;display:flex;gap:6px;z-index:2}
+.bb-pick button{width:38px;height:38px;border-radius:10px;padding:3px;background:rgba(10,10,12,.78);border:1px solid var(--line);cursor:pointer;backdrop-filter:blur(3px);transition:border-color .15s,transform .15s}
+.bb-pick button:hover{transform:scale(1.08)}
+.bb-pick button.on{border-color:var(--a)}
+.bb-pick img{width:100%;height:100%;object-fit:contain;display:block}
+
+/* texto */
+.bb-body{display:flex;flex-direction:column;gap:5px;padding:34px 14px 14px}
+.bb-name{font-family:"Space Grotesk",Inter,sans-serif;font-size:1.08rem;font-weight:700;line-height:1.2;overflow-wrap:anywhere}
+.bb-bname{font-size:.9rem;font-weight:600;color:var(--a);overflow-wrap:anywhere}
+.bb-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.bb-chip{font-size:.72rem;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 9px}
+.bb-chip.warn{color:#fbbf24;border-color:color-mix(in srgb,#fbbf24 40%,var(--line))}
+.bb-chip.more{color:var(--text)}
+.bb-empty{text-align:center;color:var(--muted);padding:60px 20px;border:1px dashed var(--line);border-radius:16px}
+
+/* ===== modal: todas as Beyblades do Blader, por saga ===== */
+.bb-panel{width:min(760px,100%)}
+.bb-mhead{display:flex;align-items:center;gap:18px;margin-bottom:18px;padding-right:28px}
+.bb-panel h2{text-align:left;padding:0;margin:0;font-size:1.5rem;letter-spacing:.02em}
+.bb-aka{color:var(--muted);font-size:.9rem;margin-top:4px}
+#mBody{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 14px;align-items:start}
+.bb-ms{margin-top:18px;min-width:0}
+.bb-ms h3{font-family:"Space Grotesk",Inter,sans-serif;font-size:.78rem;letter-spacing:.16em;color:var(--muted);margin-bottom:10px;display:flex;gap:10px;align-items:baseline}
+.bb-ms h3 em{font-style:normal;letter-spacing:0;color:var(--a);font-weight:600;font-size:.8rem}
+.bb-mrow{display:grid;grid-template-columns:1fr;gap:12px}
+.bb-mb{background:#0e0e11;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.bb-mb.unconf{border-style:dashed}
+.bb-mb .bb-bey{aspect-ratio:1/1}
+.bb-mb p{padding:10px 12px 12px;font-weight:600;font-size:.9rem;overflow-wrap:anywhere}
+.bb-mb small{display:block;margin-top:3px;font-weight:400;font-size:.75rem;color:var(--muted)}
+.bb-mb small.warn{color:#fbbf24}
+
+@media(max-width:820px){
+  .bb-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+  .bb-bey{aspect-ratio:1/1}
+  .bb-portrait{width:46px;height:46px}
+  .bb-bey .bb-portrait{left:8px;bottom:-20px}
+  .bb-body{padding-top:28px}
+  .bb-check{width:100%}
+}
+@media(prefers-reduced-motion:reduce){.bb-card,.bb-bey img{transition:none}.bb-bey.sw img{animation:none}}

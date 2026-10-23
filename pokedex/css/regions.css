@@ -1,0 +1,140 @@
+/* =========================================================
+   regions.css — Estilos da aba de regiões
+   ========================================================= */
+
+.btn { margin-top: 12px; }
+.chip--static { cursor: default; }
+.chip--static:hover { border-color: var(--border); color: var(--text-muted); }
+
+/* ---------- CARDS DE REGIÃO ---------- */
+.region-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 14px;
+  margin: 24px 0 28px;
+}
+
+.region-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2px;
+  min-height: 110px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  color: #fff;
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+  border: 3px solid transparent;
+  opacity: 0.82;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+.region-card:hover { transform: translateY(-3px); opacity: 1; box-shadow: var(--shadow-md); }
+.region-card--active { opacity: 1; border-color: var(--text); box-shadow: var(--shadow-md); }
+
+.region-card__gen {
+  position: absolute;
+  top: 6px;
+  right: 12px;
+  font-size: 2rem;
+  font-weight: 800;
+  opacity: 0.35;
+}
+.region-card__name { font-size: 1.15rem; font-weight: 800; }
+.region-card__meta { font-size: 0.8rem; opacity: 0.9; }
+
+/* ---------- DETALHE ---------- */
+.region-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 26px 28px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  color: #fff;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 20px;
+}
+.region-header__name { margin: 0; font-size: 2.2rem; font-weight: 800; }
+.region-header__sub { margin: 4px 0 0; opacity: 0.92; }
+
+.region-header__stats { display: flex; gap: 12px; }
+.region-header__stats div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 84px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.18);
+}
+.region-header__stats strong { font-size: 1.5rem; line-height: 1.1; }
+.region-header__stats span { font-size: 0.78rem; opacity: 0.92; }
+
+.region-block {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-sm);
+}
+.region-block h2 { margin: 0 0 14px; font-size: 1.2rem; }
+
+/* ---------- POKÉMON DA REGIÃO ---------- */
+.region-pokemon {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+  gap: 10px;
+}
+
+.mini-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 6px 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.mini-card:hover { transform: translateY(-3px); border-color: var(--primary); }
+.mini-card img { width: 72px; height: 72px; object-fit: contain; image-rendering: pixelated; }
+.mini-card__num { font-size: 0.72rem; color: var(--text-muted); font-weight: 700; }
+.mini-card__name { font-size: 0.82rem; font-weight: 700; text-align: center; word-break: break-word; }
+
+/* ---------- LOCAIS ---------- */
+.region-search { max-width: 360px; margin-bottom: 14px; }
+
+.locations-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 340px;
+  overflow-y: auto;
+  columns: 3 200px;
+  column-gap: 20px;
+}
+.locations-list li {
+  break-inside: avoid;
+  padding: 5px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 0.9rem;
+}
+.locations-list__empty { border-bottom: none !important; }
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 640px) {
+  .region-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .region-header { padding: 20px; }
+  .region-header__name { font-size: 1.7rem; }
+  .region-header__stats { width: 100%; }
+  .region-header__stats div { flex: 1; min-width: 0; }
+  .region-block { padding: 16px; }
+}

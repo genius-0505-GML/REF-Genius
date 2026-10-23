@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokédex — Treinadores</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/regions.css">
+<link rel="stylesheet" href="css/trainers.css">
+<link rel="stylesheet" href="../shell.css"><script src="../icons.js"></script>
+<script src="../shell.js"></script>
+</head>
+<body>
+
+<header class="header">
+  <div class="header__inner">
+    <a href="index.html" class="logo">
+      <span class="logo__ball" aria-hidden="true"></span>
+      <span class="logo__text">Pokédex</span>
+    </a>
+
+    <nav class="nav" id="mainNav">
+      <a href="index.html" class="nav__link">Início</a>
+      <a href="index.html#pokemon" class="nav__link">Pokémon</a>
+      <a href="teams.html" class="nav__link">Times</a>
+      <a href="regions.html" class="nav__link">Regiões</a>
+      <a href="trainers.html" class="nav__link nav__link--active">Treinadores</a>
+    </nav>
+
+    <div class="header__actions">
+      <button id="themeToggle" class="icon-btn" title="Alternar tema" aria-label="Alternar tema claro/escuro">🌙</button>
+      <button class="icon-btn nav__burger" id="navBurger" aria-label="Abrir menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- Navegação / breadcrumb: muda conforme a tela (regiões ou região) -->
+  <nav id="crumbs" class="crumbs" aria-label="Navegação"></nav>
+
+  <section class="hero">
+    <h1 id="heroTitle">Treinadores</h1>
+    <p id="heroSub">Líderes de Ginásio, Elite Four e Campeões de cada região</p>
+  </section>
+
+  <!-- Tela 1: lista de regiões -->
+  <section id="regionsView" aria-label="Regiões">
+    <div id="regionCards" class="region-cards"></div>
+  </section>
+
+  <!-- Tela 2: uma região -->
+  <section id="regionView" hidden>
+    <header id="regionHeader" class="region-header"></header>
+
+    <section class="filters tr-filters" aria-label="Filtros">
+      <div class="filters__group">
+        <h3>Jogo</h3>
+        <div class="chip-group" id="gameFilters"></div>
+      </div>
+      <div class="filters__group">
+        <h3>Categoria</h3>
+        <div class="chip-group" id="categoryFilters"></div>
+      </div>
+    </section>
+
+    <div id="loadingState" class="state-panel" hidden>
+      <div class="loading-bolt">⚡</div>
+      <p>Carregando treinadores...</p>
+    </div>
+    <div id="errorState" class="state-panel" hidden>
+      <p class="state-panel__title">Não foi possível carregar os treinadores.</p>
+      <button id="retryBtn" class="btn btn--primary">Tentar novamente</button>
+    </div>
+    <div id="emptyState" class="state-panel" hidden></div>
+
+    <div id="trainerSections"></div>
+  </section>
+
+</main>
+
+<!-- Modal do treinador -->
+<div id="trainerModal" class="tr-modal" hidden>
+  <div class="tr-modal__backdrop" data-close></div>
+  <div class="tr-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalName" tabindex="-1">
+    <button class="tr-modal__close icon-btn" data-close aria-label="Fechar">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>Dados de treinadores com referência no <a href="https://www.serebii.net" target="_blank" rel="noopener">Serebii.net</a>; Pokémon e sprites pela <a href="https://pokeapi.co" target="_blank" rel="noopener">PokéAPI</a>. Projeto sem fins lucrativos, feito para fins educacionais.</p>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/nav.js"></script>
+<script src="data/trainers/regions.js"></script>
+<script src="data/trainers/profiles.js"></script>
+<script src="js/trainers.js"></script>
+</body>
+</html>

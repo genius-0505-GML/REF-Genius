@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LOL Database</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../shell.css"><script src="../icons.js"></script>
+<script src="../shell.js"></script>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <a class="logo" data-view="home">League Of Legends <span></span></a>
+    <button id="menuBtn" aria-label="Menu">☰</button>
+    <nav id="nav">
+      <a data-view="home">Home</a>
+      <a data-view="champions">Campeões</a>
+      <a data-view="team">Montar time</a>
+      <a data-view="regions">Regiões</a>
+      <a data-view="skins">Skins</a>
+    </nav>
+    <input id="q" type="search" placeholder="🔎 Pesquisar..." autocomplete="off">
+    <button id="theme" class="btn ghost"></button>
+  </div>
+</header>
+
+<main>
+  <div id="status" class="status"></div>
+
+  <section id="home" class="view">
+    <div class="hero">
+      <h1>Wiki de <span>League of Legends</span></h1>
+      <p>Campeões, habilidades, skins e regiões de Runeterra.</p>
+      <button class="btn" data-view="champions">Explorar campeões</button>
+    </div>
+    <h2>Campeões</h2>
+    <div id="homeGrid" class="chips"></div>
+    <h2>❤️ Meus favoritos</h2>
+    <div id="favs" class="grid"></div>
+  </section>
+
+  <section id="champions" class="view">
+    <h2>Campeões</h2>
+    <div class="filters">
+      <select id="fClass"><option value="">Todas as classes</option></select>
+      <select id="fDiff">
+        <option value="">Todas as dificuldades</option>
+        <option value="low">Fácil (1-3)</option>
+        <option value="mid">Média (4-7)</option>
+        <option value="high">Difícil (8-10)</option>
+      </select>
+      <span id="count"></span>
+    </div>
+    <div id="grid" class="grid"></div>
+  </section>
+
+  <section id="team" class="view">
+    <h2>⚔️ Montar time</h2>
+    <div class="filters"><input id="tName" type="text" placeholder="Nome do time" maxlength="40" autocomplete="off"><button class="btn" id="tSave">Salvar time</button><button class="btn" id="tMd">Salvar em .md</button><button class="btn ghost" id="tClear">Limpar</button><span id="tCount"></span></div>
+    <div id="tp" class="slots"></div>
+    <h2>Escolher campeão <span id="pickFor" class="na"></span></h2>
+    <div class="filters"><input id="pkq" type="search" placeholder="Buscar campeão..." autocomplete="off"><select id="pkc"><option value="">Todas as classes</option></select></div>
+    <div id="pkg" class="chips pickbox"></div>
+    <h2>Times salvos</h2>
+    <div id="tSaved"></div>
+  </section>
+
+  <section id="regions" class="view">
+    <h2>🌎 REGIÕES</h2>
+    <div id="regGrid" class="grid"></div>
+  </section>
+
+  <section id="skins" class="view">
+    <h2>👕 SKINS</h2>
+    <div class="filters"><select id="skinChamp"></select></div>
+    <div id="skinGrid" class="grid"></div>
+  </section>
+
+  <section id="search" class="view"><div id="results"></div></section>
+</main>
+
+<div id="modal" class="overlay"><div class="box"><button class="close" data-close>✕</button><div id="mBody"></div></div></div>
+<div id="lightbox" class="overlay"><button class="close" data-close>✕</button><figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure></div>
+<script src="script.js"></script>
+</body>
+</html>

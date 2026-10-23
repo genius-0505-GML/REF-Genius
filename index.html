@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>REF-Genius</title>
+<link rel="stylesheet" href="style.css">
+<script>try{if(localStorage.getItem("rg-side-collapsed")==="1")document.documentElement.classList.add("rg-collapsed")}catch(e){}</script>
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <a class="brand" href="index.html">REF-Genius</a>
+  <nav>
+    <a class="nav-item active" href="index.html"><span class="ico ico-home">⌂</span>Início</a>
+    <div class="nav-sec">GAMES</div>
+    <a class="nav-item" data-game="dota" href="dota/index.html"><span class="ico">D2</span>Dota 2</a>
+    <a class="nav-item" data-game="lol" href="lol/index.html"><span class="ico">LoL</span>League of Legends</a>
+    <a class="nav-item" data-game="pokemon" href="pokedex/index.html"><span class="ico">P</span>Pokémon</a>
+    <a class="nav-item" data-game="valorant" href="valorant/index.html"><span class="ico">V</span>VALORANT</a>
+    <a class="nav-sec nav-sec-link" href="tcg/index.html">TCG</a>
+    <a class="nav-item" data-game="magic" href="tcg/magic/index.html"><span class="ico">MTG</span>Magic</a>
+    <a class="nav-item" data-game="ptcg" href="tcg/pokemon/index.html"><span class="ico">PKM</span>Pokémon TCG</a>
+    <a class="nav-item" data-game="lorcana" href="tcg/lorcana/index.html"><span class="ico">LOR</span>Lorcana</a>
+    <a class="nav-item" data-game="onepiece" href="tcg/one-piece/index.html"><span class="ico">OP</span>One Piece</a>
+    <a class="nav-item" data-game="riftbound" href="tcg/riftbound/index.html"><span class="ico">RB</span>Riftbound</a>
+    <div class="nav-sec">STEAM</div>
+    <a class="nav-item" data-game="steam" href="steam/index.html"><span class="ico">ST</span>Minha Biblioteca</a>
+    <div class="nav-sec">ANIMES</div>
+    <a class="nav-item" data-game="anime" href="anime/index.html"><span class="ico">AN</span>Minha Lista</a>
+    <div class="nav-sec">BEYBLADE</div>
+    <a class="nav-item" data-game="beyblade" href="beyblade/index.html"><span class="ico">BB</span>Metal Saga</a>
+  </nav>
+</aside>
+<div class="scrim" id="scrim"></div>
+
+<main class="main">
+  <header class="topbar">
+    <button class="burger" id="burger" aria-label="Abrir menu">☰</button>
+    <button class="profile-btn" id="profileBtn" aria-label="Perfil"><span class="av" id="topAvatar"></span></button>
+  </header>
+
+  <section class="hero">
+    <h1>REF-Genius</h1>
+    <p class="hint">Select your game</p>
+    <div class="grid">
+      <a class="card" data-game="dota" href="dota/index.html"><span class="ico">D2</span><span class="name">DOTA 2</span></a>
+      <a class="card" data-game="lol" href="lol/index.html"><span class="ico">LoL</span><span class="name">LEAGUE OF LEGENDS</span></a>
+      <a class="card" data-game="pokemon" href="pokedex/index.html"><span class="ico">P</span><span class="name">POKÉMON</span></a>
+      <a class="card" data-game="valorant" href="valorant/index.html"><span class="ico">V</span><span class="name">VALORANT</span></a>
+      <a class="card" data-game="tcg" href="tcg/index.html"><span class="ico">TCG</span><span class="name">TCG</span></a>
+      <a class="card" data-game="steam" href="steam/index.html"><span class="ico">ST</span><span class="name">STEAM</span></a>
+      <a class="card" data-game="anime" href="anime/index.html"><span class="ico">AN</span><span class="name">ANIMES</span></a>
+      <a class="card" data-game="beyblade" href="beyblade/index.html"><span class="ico">BB</span><span class="name">BEYBLADE</span></a>
+    </div>
+  </section>
+</main>
+
+<div class="modal" id="modal" hidden>
+  <div class="panel" role="dialog" aria-modal="true" aria-label="Perfil">
+    <button class="close" id="closeModal" aria-label="Fechar">✕</button>
+    <h2>PROFILE</h2>
+    <div class="av big" id="previewAvatar"></div>
+    <p class="who" id="previewName">Nenhum personagem</p>
+    <p class="label">Escolher personagem</p>
+    <div class="tabs" id="tabs"></div>
+    <input class="search" id="search" type="search" placeholder="Buscar..." autocomplete="off">
+    <div class="chars" id="chars"></div>
+    <div class="actions">
+      <button class="btn ghost" id="clearBtn">Remover</button>
+      <button class="btn" id="saveBtn">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<script src="icons.js"></script>
+<script src="sources.js"></script>
+<script src="script.js"></script>
+<script>RG_APPLY();</script>
+</body>
+</html>
